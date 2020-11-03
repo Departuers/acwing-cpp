@@ -41,7 +41,7 @@ int main(){
         for(int i=0;i<n;i++){
             int j=q[i];
             for(int k=h[j];k;k=ne[k]){
-                dis[e[k]]=max(dis[ e[k]],dis[j]+1);
+                dis[e[k]]=max(dis[e[k]],dis[j]+1);
             }
         }
         int res=0;

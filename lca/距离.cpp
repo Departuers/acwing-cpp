@@ -56,7 +56,7 @@ void tarjan(int u)
         }
     }
     st[u] = 2;
-}
+} 
 int main(int argc, char const *argv[])
 {
     for (int i = 0; i < N; i++)
