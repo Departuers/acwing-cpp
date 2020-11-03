@@ -37,7 +37,6 @@ int main(){
     int a,b;
     cin>>n>>m;
     while(m--){
-        
         cin>>a>>b;
         add(a,b);
     }

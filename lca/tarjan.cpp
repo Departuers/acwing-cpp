@@ -67,6 +67,5 @@ int main(int argc, char const *argv[])
     {
         printf("%d\n", ans[i]);
     }
-
     return 0;
 }
