@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cstring>
 using namespace std;
-const int inf = 0x3f3f3f3f, N = 100100, M = 300100;
+const int inf = 0x3f3f3f3f, N = 100100, M = N * 2;
 int n, m, idx;
 struct node
 {
@@ -44,24 +44,25 @@ void solve(int vl, int vr, int ql, int qr)
         {
             if (q[i].y <= mid)
             {
-                add(q[i].x, q[i].k);
+
                 lq[++l] = q[i];
             }
             else
-                rq[++r] = q[i];
+                add(q[i].x, q[i].k),
+                    rq[++r] = q[i];
         }
         else
         {
             ll tem = ask(q[i].y) - ask(q[i].x - 1);
             if (q[i].k <= tem)
-                lq[++l] = q[i];
+                rq[++r] = q[i];
             else
                 q[i].k -= tem,
-                    rq[++r] = q[i];
+                    lq[++l] = q[i];
         }
     }
     for (int i = ql; i <= qr; i++)
-        if (q[i].op == 1 && q[i].y <= mid)
+        if (q[i].op == 1 && q[i].y > mid)
             add(q[i].x, -q[i].k);
 
     for (int i = 1; i <= l; i++)
@@ -72,23 +73,16 @@ void solve(int vl, int vr, int ql, int qr)
 }
 int main(int argc, char const *argv[])
 {
-    scanf("%d%d", &n, &m);
+    cin >> n >> m;
     int x, y, z;
     char op[2];
-    for (int i = 1; i <= n; i++)
-    {
-        scanf("%d", &x);
-        q[++idx] = {1, i, x, 1, -3};
-        now[i] = x;
-    }
     for (int i = 1; i <= m; i++)
     {
         ans[i] = -1;
         scanf("%s", op);
+        scanf("%d%d", &x, &y);
         if (*op == 'C')
         {
-            scanf("%d%d", &x, &y);
-
             if (now[x] != 0)
             {
                 q[++idx] = {1, x, now[x], -1, -3};
@@ -103,12 +97,10 @@ int main(int argc, char const *argv[])
         }
         else
         {
-            scanf("%d%d%d", &x, &y, &z);
-
-            q[++idx] = {2, x, y, z, i};
+            q[++idx] = {2, x, y, 8, i};
         }
     }
-    solve(0, 1e10, 1, idx);
+    solve(0, 1e9 + 11, 1, idx);
 
     for (int i = 1; i <= m; i++)
     {

@@ -74,41 +74,18 @@ int main(int argc, char const *argv[])
 {
     scanf("%d%d", &n, &m);
     int x, y, z;
-    char op[2];
     for (int i = 1; i <= n; i++)
     {
         scanf("%d", &x);
         q[++idx] = {1, i, x, 1, -3};
-        now[i] = x;
     }
     for (int i = 1; i <= m; i++)
     {
         ans[i] = -1;
-        scanf("%s", op);
-        if (*op == 'C')
-        {
-            scanf("%d%d", &x, &y);
-
-            if (now[x] != 0)
-            {
-                q[++idx] = {1, x, now[x], -1, -3};
-                q[++idx] = {1, x, y, 1, -3};
-                now[x] = y;
-            }
-            else
-            {
-                q[++idx] = {1, x, y, 1, -3};
-                now[x] = y;
-            }
-        }
-        else
-        {
-            scanf("%d%d%d", &x, &y, &z);
-
-            q[++idx] = {2, x, y, z, i};
-        }
+        scanf("%d%d%d", &x, &y, &z);
+        q[++idx] = {2, x, y, z, i};
     }
-    solve(0, 1e10, 1, idx);
+    solve(-1e9, 1e9, 1, idx);
 
     for (int i = 1; i <= m; i++)
     {
