@@ -77,7 +77,7 @@ int main(int argc, char const *argv[])
     for (int i = 1; i <= n; i++)
     {
         scanf("%d", &x);
-        q[++idx] = {1, i, x, 1, -3};
+        q[++idx] = {1, i, x, 1};
     }
     for (int i = 1; i <= m; i++)
     {

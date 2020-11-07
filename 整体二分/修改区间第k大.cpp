@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdio>
+#include <queue>
 #include <algorithm>
+#include <vector>
 #include <cstring>
 using namespace std;
 const int inf = 0x3f3f3f3f, N = 100100, M = N * 2;
@@ -42,14 +44,13 @@ void solve(int vl, int vr, int ql, int qr)
     {
         if (q[i].op == 1)
         {
-            if (q[i].y <= mid)
+                if (q[i].y <= mid)
             {
-
+                
                 lq[++l] = q[i];
             }
-            else
-                add(q[i].x, q[i].k),
-                    rq[++r] = q[i];
+            else add(q[i].x, q[i].k),
+                rq[++r] = q[i];
         }
         else
         {
@@ -83,16 +84,16 @@ int main(int argc, char const *argv[])
         scanf("%d%d", &x, &y);
         if (*op == 'C')
         {
-            if (now[x] != 0)
+            if (now[x]!=0)
             {
                 q[++idx] = {1, x, now[x], -1, -3};
                 q[++idx] = {1, x, y, 1, -3};
-                now[x] = y;
+                now[x]=y;
             }
             else
             {
                 q[++idx] = {1, x, y, 1, -3};
-                now[x] = y;
+                now[x]=y;
             }
         }
         else
@@ -100,7 +101,7 @@ int main(int argc, char const *argv[])
             q[++idx] = {2, x, y, 8, i};
         }
     }
-    solve(0, 1e9 + 11, 1, idx);
+    solve(0, 1e9+11, 1, idx);
 
     for (int i = 1; i <= m; i++)
     {
