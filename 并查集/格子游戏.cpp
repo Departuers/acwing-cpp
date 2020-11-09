@@ -16,7 +16,7 @@ int main(){
     int res=0;
     for(int i=1;i<=m;i++){
         scanf("%d%d%s",&a,&b,op);
-        a--,b--;
+        a--,b--;//下标都从0开始
         x=get(a,b);
         if(*op=='D'){
             y=get(a+1,b);
