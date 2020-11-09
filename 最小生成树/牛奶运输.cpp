@@ -62,6 +62,7 @@ int main(int argc, char const *argv[])
     for (int i = 1; i <= n; i++)
         p[i] = i;
     sort(e, e + m);
+
     ll sum = 0, res = 1e9;
     for (int i = 0; i < m; i++)
     {
@@ -71,7 +72,7 @@ int main(int argc, char const *argv[])
             p[a] = b;
             e[i].flag = 1;
             sum += e[i].c;
-            add(e[i].a, e[i].b, e[i].c);
+            add(e[i].a, e[i].b, e[i].c);//要求树上任意两点的路径最大值和次大值
             add(e[i].b, e[i].a, e[i].c);
         }
     }

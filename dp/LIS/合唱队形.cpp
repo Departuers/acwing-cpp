@@ -4,21 +4,14 @@
 #include <algorithm>
 #include <vector>
 #include <cstring>
+#include <unordered_map>
+#include <deque>
 using namespace std;
-const int inf = 0x3f3f3f3f;
-int n, m;
-int a[1110], f[1110];
-/**
- * f[i]表示只考虑前i个数,并且以第i个数结尾的最长上升子序列
- * 属性max
- * 状态划分,枚举以a[i]结尾的倒数第二个数是什么
- * f[i]=max{ f[j]+1,0<j<i }
- * O(n^2)
- * */
+const int inf = 0x3f3f3f3f, N = 1010;
+int n, m, a[N], f[N], g[N];
 int main(int argc, char const *argv[])
 {
     cin >> n;
-    int res = 0;
     for (int i = 0; i < n; i++)
         cin >> a[i];
     for (int i = 0; i < n; i++)
@@ -30,6 +23,21 @@ int main(int argc, char const *argv[])
                 f[i] = max(f[i], f[j] + 1);
         }
     }
-    cout << res << endl;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        g[i] = 1;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] > a[j])
+                g[i] = max(g[i], g[j] + 1);
+        }
+    }
+    int res = 0;
+    for (int i = 0; i < n; i++)
+    {
+        res = max(f[i] + g[i] - 1, res);
+    }
+
+    cout << n - res << endl;
     return 0;
 }
