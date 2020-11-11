@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
             cin >> v[i][j] >> w[i][j];
         }
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)//物品
     {
         for (int j = m; j >= 0; j--)
         {

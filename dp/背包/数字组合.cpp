@@ -31,7 +31,7 @@ int main(int argc, char const *argv[])
     f[0] = 1;
     for (int i = 1; i <= n; i++)
     {
-        for (int j = m; j >= v[i]; j--)
+        for (int j = m; j >= v[i]; j--)//代表01背包倒序枚举
         {
             f[j] += f[j - v[i]];
         }

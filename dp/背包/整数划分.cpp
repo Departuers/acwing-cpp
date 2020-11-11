@@ -10,7 +10,8 @@
 #define y second
 using namespace std;
 const int inf = 0x3f3f3f3f, mod = 1e9 + 7;
-int n, m, f[1010];
+ll n, m, f[1010];
+typedef long long ll;
 /**
  * 一个正整数n可以表示成若干个正整数之和，形如：n=n1+n2+…+nk，其中n1≥n2≥…≥nk,k≥1
  * 本题要求我们对整数进行划分，且次序不重要，
@@ -31,11 +32,12 @@ int main(int argc, char const *argv[])
     f[0] = 1;
     for (int i = 1; i <= n; i++)     //枚举物品
     {                                //第i个物品体积为i
-    
         for (int j = i; j <= n; j++) //完全背包,体积到n为止
         {
             f[j] += f[j - i];
+            f[j] %= mod;
         }
     }
+    cout << f[n] << endl;
     return 0;
 }
