@@ -43,7 +43,7 @@ int dp(int n){
         num.push_back(n%10);
         n/=10;
     }
-    int res=0,last=0;//last前一位是几
+    int res=0,last=0;//last记录前一位是几
     for(int i=num.size()-1;i>=0;i--){
         int x=num[i];
         for(int j=0;j<x;j++){//枚举0~x
