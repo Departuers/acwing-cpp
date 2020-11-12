@@ -14,10 +14,10 @@ void add(int a,int b){
 }
 void bfs(){
     memset(depth,63,sizeof depth);
-    depth[root]=1;
-    depth[0]=0;
     queue<int> q;
     q.push(root);
+    depth[0]=0;
+    depth[root]=1;
     while (q.size())
     {
         int t=q.front();q.pop();
@@ -35,16 +35,13 @@ void bfs(){
     }
 }
 int lca(int a,int b){
-    if (depth[a]<depth[b])
-        swap(a,b);
-    for (int i = 19; i >=0; i--)
-    {
-       if(depth[up[a][i]]>=depth[b])
+    if(depth[a]<depth[b])swap(a,b);
+    for(int i=19;i>=0;i--){
+        if(depth[up[a][i]]>=depth[b])
             a=up[a][i];
     }
     if(a==b)return a;
-    for (int i =19;i>=0; i--)
-    {
+    for(int i=19;i>=0;i--){
         if(up[a][i]!=up[b][i])
         {
             a=up[a][i];
