@@ -22,6 +22,7 @@ double get(int x1,int y1,int x2,int y2){
     return sqrt(dx*dx+dy*dy);
 }
 int main(){
+    int a=1LL;
     cin>>n>>k;
     for(int i=0;i<n;i++){
         p[i]=i;

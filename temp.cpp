@@ -15,5 +15,11 @@ typedef pair<int, int> PII;
 
 int main(int argc, char const *argv[])
 {
+    int res=0;
+    for (int i = 1; i <=100; i++)
+    {
+        res+=i;
+    }
+    cout<<res<<endl;
     return 0;
 }
